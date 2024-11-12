@@ -1,0 +1,65 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField] Rigidbody2D body;
+    [SerializeField] float speedx=3f;
+    [SerializeField] float speedy=3f;
+  
+    [SerializeField] float jumpPower=1f;
+    float gravity;
+    public GameManager gameManager;
+   
+
+   
+
+    private void Awake()
+    {
+        body = GetComponent<Rigidbody2D>();
+    }
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        /* float speedx= body.velocity.x ;  
+         float speedy= body.velocity.y ;*/
+
+
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+           body.AddForce(new Vector2(0,1) * jumpPower ,ForceMode2D.Impulse);
+
+        }
+
+        
+        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("obstacle"))
+        {
+
+            
+            gameManager.GameOver();
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameManager.AddScore();
+    }
+}
