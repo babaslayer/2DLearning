@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore",score);
             PlayerPrefs.Save();
                 }
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 }
