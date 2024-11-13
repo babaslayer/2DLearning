@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpPower = 1f;
     float gravity;
     public GameManager gameManager;
+    public CoinManager coinManager;
 
 
 
@@ -48,7 +49,17 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("coin"))
+        {
+            Destroy(collision.gameObject);//Bu þekilde kullanýca çalýþtý fakat ilk yaratýlan coin yok olunca bazý þeyler bozuldu.
+        }
+    }
+
+
+        private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("obstacle"))
         {
@@ -59,10 +70,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+   /* private void OnTriggerEnter2D(Collider2D collision)
     {
         gameManager.AddScore();
-    }
+    }*/
     public void Jumping(float speedMult)
     {
 
