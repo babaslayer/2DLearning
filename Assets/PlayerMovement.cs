@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     public void Jumping(float speedMult)
     {
 
-        // body.velocity=Vector2.up*jumpPower*speedMult;
+        //body.velocity=Vector2.up*jumpPower*speedMult;
         body.AddForce(Vector2.up * jumpPower * speedMult, ForceMode2D.Impulse);
     }
 }
