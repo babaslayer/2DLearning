@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Rigidbody2D body;
-    [SerializeField] float speedx = 3f;
-    [SerializeField] float speedy = 3f;
 
     [SerializeField] float jumpPower = 1f;
     float gravity;
@@ -31,15 +29,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /* float speedx= body.velocity.x ;  
-         float speedy= body.velocity.y ;*/
-
-
-
-
-
-
-        if (Input.GetMouseButtonDown(0))
+       
+           if (Input.GetMouseButtonDown(0))
         {
 
             body.AddForce(new Vector2(0, 1) * jumpPower, ForceMode2D.Impulse);
@@ -54,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("coin"))
         {
+            gameManager.CoinAdd();
             Destroy(collision.gameObject);//Bu þekilde kullanýca çalýþtý fakat ilk yaratýlan coin yok olunca bazý þeyler bozuldu.
         }
     }
@@ -80,4 +72,5 @@ public class PlayerMovement : MonoBehaviour
         //body.velocity=Vector2.up*jumpPower*speedMult;
         body.AddForce(Vector2.up * jumpPower * speedMult, ForceMode2D.Impulse);
     }
+   
 }
