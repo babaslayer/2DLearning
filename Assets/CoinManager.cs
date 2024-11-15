@@ -28,7 +28,7 @@ public class CoinManager : MonoBehaviour
     /*public void GettingCoin()
     {
 
-        Destroy(gameObject);
+        Destroy(gameObject);Bunu bu þekilde kullanýnca çalýþmadý.
 
 
     }*/

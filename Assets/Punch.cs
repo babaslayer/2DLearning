@@ -74,7 +74,7 @@ public class Punch : MonoBehaviour
         
       
         punch_transform.position=Vector2.MoveTowards(punch_transform.position, targetTransform.position, punchSpeed * Time.deltaTime);
-
+        //Bu fonksiyon iki pozisyon arasýnda yer deðiþtirmeyi saðlar.
 
     }
     void PunchBack()
@@ -89,7 +89,7 @@ public class Punch : MonoBehaviour
     {
 
         
-
+        //vector.Distance sadece aradaki mesafeyi ölçer bu yüzden if içinde kullanýlýyor.
         if (Vector2.Distance(punch_transform.position, targetTransform.position)==0)
         {
             ispunchingDown = false;
@@ -100,7 +100,7 @@ public class Punch : MonoBehaviour
 
         }
 
-
+        //Burada overlapbox un içinde herhangi bir collide olup olmadýðýný inceler.
         if (Physics2D.OverlapBox(punch_transform.position, punch_size,0f,ground))
         {
             ispunchingDown = false;
@@ -116,8 +116,9 @@ public class Punch : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
-    {Gizmos.color = Color.yellow;
+    private void OnDrawGizmos()//punchýn üzerine bir kare çizer.
+    {
+        Gizmos.color = Color.yellow;
         Gizmos.DrawCube( punch_transform.position,punch_size);
         
     }   

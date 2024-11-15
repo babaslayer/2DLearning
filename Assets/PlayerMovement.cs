@@ -66,11 +66,14 @@ public class PlayerMovement : MonoBehaviour
     {
         gameManager.AddScore();
     }*/
-    public void Jumping(float speedMult)
+
+    
+    public void Jumping(float jumpMultiplier)/*Baþka bir scripten buraya deðiþken getirirken türünü ve bir ad olarak buraya verip diðer scripten 
+     buraya ulaþýrken scriptindeðiþkeni.Method(Deðiþken adý) */
     {
 
         //body.velocity=Vector2.up*jumpPower*speedMult;
-        body.AddForce(Vector2.up * jumpPower * speedMult, ForceMode2D.Impulse);
+        body.AddForce(Vector2.up * jumpPower * jumpMultiplier, ForceMode2D.Impulse);
     }
    
 }
