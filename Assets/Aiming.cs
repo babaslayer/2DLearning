@@ -5,9 +5,8 @@ using UnityEngine;
 public class Aiming : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Input m_Input;
     [SerializeField] int rotation_speed;
-    [SerializeField] Transform mouse_position;
+    [SerializeField] Transform player_position;   
     [SerializeField] Transform gun_position;
     void Start()
     {
@@ -16,7 +15,19 @@ public class Aiming : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {   
+        Aim();
+
     }
+    void Aim()
+    {
+
+
+
+        Vector3 mousePos = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        mousePos.z = 0;
+        gun_position.transform.right = (mousePos - player_position.position).normalized;
+
+    }
+
 }
