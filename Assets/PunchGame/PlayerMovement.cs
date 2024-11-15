@@ -46,7 +46,9 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("coin"))
         {
             gameManager.CoinAdd();
-            Destroy(collision.gameObject);//Bu þekilde kullanýca çalýþtý fakat ilk yaratýlan coin yok olunca bazý þeyler bozuldu.
+            Destroy(collision.gameObject);
+            //Bu þekilde kullanýca çalýþtý fakat ilk yaratýlan coin yok olunca bazý þeyler bozuldu.Bunu düzeltmek için nesneyi (Coin) Prefab yapýp koddaki referansa atadýk.
+
         }
     }
 
