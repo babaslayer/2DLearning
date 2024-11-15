@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] float bulletSpeed;
+    [SerializeField] float shootTimer;
+    [SerializeField] Transform muzzlePos;
+    [SerializeField] Rigidbody2D bulletBody;
+    
     void Start()
     {
         

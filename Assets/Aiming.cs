@@ -5,7 +5,7 @@ using UnityEngine;
 public class Aiming : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] int rotation_speed;
+   
     [SerializeField] Transform player_position;   
     [SerializeField] Transform gun_position;
     void Start()
