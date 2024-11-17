@@ -14,11 +14,7 @@ public class NinjaMovement : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
     }
-    void Start()
-    {
-       
-    }
-
+  
 
     private void Update()
     {

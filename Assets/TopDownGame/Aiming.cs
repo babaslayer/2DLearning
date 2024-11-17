@@ -7,7 +7,7 @@ public class Aiming : MonoBehaviour
     // Start is called before the first frame update
    
     [SerializeField] Transform player_position;   
-    [SerializeField] Transform gun_position;
+    [SerializeField] Transform gun_pivot;
     void Start()
     {
         
@@ -26,7 +26,7 @@ public class Aiming : MonoBehaviour
 
         Vector3 mousePos = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
         mousePos.z = 0;
-        gun_position.transform.right = (mousePos - player_position.position).normalized;
+        gun_pivot.transform.right = (mousePos - player_position.position).normalized;
 
     }
 
