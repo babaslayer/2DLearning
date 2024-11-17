@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 
     public void SetPool(BulletPool pool)
     {
-        pooling = pool;
+       pooling=pool;
     }
 
     private void Awake()
@@ -18,13 +18,13 @@ public class Bullet : MonoBehaviour
         bulletBody = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
+    private void OnEnable()//Nesne set active true olduðunda çalýþýr.
     {
         bulletBody.velocity = Vector2.zero; // Hýz sýfýrlanýyor
         Invoke(nameof(ReturnToPool), bulletLifeTime); // Yaþam süresi tamamlanýnca havuza dön
     }
 
-    private void OnDisable()
+    private void OnDisable()//Nesne Set Active false olduðunda çalýþýr.
     {
         CancelInvoke(nameof(ReturnToPool)); // Önceki Invoke'u iptal et
         bulletBody.velocity = Vector2.zero; // Hýz sýfýrlanýyor

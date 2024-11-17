@@ -20,10 +20,10 @@ public class Shooting : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject _bullet = bulletPool.GetFromPool(); // Havuzdan bir mermi al
+        GameObject _bullet = bulletPool.GetFromPool(); // Yeni bir mermi nesnesi referansý alýyoruz ve onu havuzdan çýkarýyoruz.
         if (_bullet != null)
         {
-            Bullet bulletScript = _bullet.GetComponent<Bullet>();
+            Bullet bulletScript = _bullet.GetComponent<Bullet>();//Buradaki amaç, _bullet GameObject'inin üzerinde bulunan Bullet bileþenine (scriptine) referans almak.
             Vector2 velocity = Muzzle_Pos.right * bulletScript.bulletSpeed; // Mermi hýzý
             bulletScript.ResetBullet(Muzzle_Pos.position, Muzzle_Pos.rotation, velocity);
         }
