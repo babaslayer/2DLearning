@@ -28,35 +28,24 @@ public class EnemyHealth : MonoBehaviour
     {
         enemyHp -= damage;
 
-        if (enemyHp < 0) 
+        if (enemyHp <= 0) 
         {
-            Die();
+           Destroy(enemyBody);
         }
 
 
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.CompareTag("Bullet")) // Çarpan nesne "Bullet" tagine sahip mi?
         {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            Bullet bullet = collision.GetComponent<Bullet>(); // Bullet bileþenini al
             if (bullet != null)
             {
-                TakeDamage(bullet.damage);
-                bullet.ReturnToPool();
-
-
+                TakeDamage(bullet.damage); // Hasar ver
+                bullet.ReturnToPool(); // Mermiyi havuza geri gönder
             }
-        
         }
     }
-
-    void Die()
-    {
-        Destroy(enemyBody);
-        
-
-    }
-
 }
