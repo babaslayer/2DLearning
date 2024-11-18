@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed; // Mermi hýzý
     [SerializeField] private float bulletLifeTime = 5f; // Merminin yaþam süresi
     private BulletPool pooling;
+    [SerializeField] public float damage;
 
     public void SetPool(BulletPool pool)
     {
@@ -30,7 +31,7 @@ public class Bullet : MonoBehaviour
         bulletBody.velocity = Vector2.zero; // Hýz sýfýrlanýyor
     }
 
-    private void ReturnToPool()
+    public void ReturnToPool()
     {
         pooling.ReturnToPool(gameObject); // Havuza geri dön
     }

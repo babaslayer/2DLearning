@@ -33,8 +33,9 @@ public class SpawnerTPS : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube((minDistance + maxDistance) / 2, maxDistance - minDistance);
+        Gizmos.color = Color.green;//Gizmosa bu þekilde renk atýyoruz.
+        Gizmos.DrawWireCube((minDistance + maxDistance) / 2, maxDistance - minDistance);//DrawCube den farký ise için boþ bir kare elde etmektir.
+        //küpün merkezini ve uzunluðunu bu þelilde belirttik.
     }
 
 
