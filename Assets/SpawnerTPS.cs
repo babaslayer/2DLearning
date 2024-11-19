@@ -9,6 +9,7 @@ public class SpawnerTPS : MonoBehaviour
     [SerializeField] float timer;
     [SerializeField] Vector2 minDistance;
     [SerializeField] Vector2 maxDistance;
+
     
 
     // Update is called once per frame

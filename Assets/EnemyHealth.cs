@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] float maxEnemyHp=10f;
     [SerializeField] float enemyHp;
     [SerializeField] Rigidbody2D enemyBody;
+    [SerializeField] Bullet bullet;
 
     private void Awake()
     {
@@ -24,28 +25,17 @@ public class EnemyHealth : MonoBehaviour
         
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         enemyHp -= damage;
 
         if (enemyHp <= 0) 
         {
-           Destroy(enemyBody);
+           Destroy(gameObject);
         }
 
 
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Bullet")) // Çarpan nesne "Bullet" tagine sahip mi?
-        {
-            Bullet bullet = collision.GetComponent<Bullet>(); // Bullet bileþenini al
-            if (bullet != null)
-            {
-                TakeDamage(bullet.damage); // Hasar ver
-                bullet.ReturnToPool(); // Mermiyi havuza geri gönder
-            }
-        }
-    }
+   
 }

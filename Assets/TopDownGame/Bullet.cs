@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float bulletLifeTime = 5f; // Merminin yaþam süresi
     private BulletPool pooling;
     [SerializeField] public float damage;
+    
 
     public void SetPool(BulletPool pool)
     {
@@ -17,6 +18,8 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         bulletBody = GetComponent<Rigidbody2D>();
+        
+
     }
 
     private void OnEnable()//Nesne set active true olduðunda çalýþýr.
@@ -42,5 +45,22 @@ public class Bullet : MonoBehaviour
         transform.rotation = rotation; // Yeni rotasyon
         bulletBody.velocity = velocity; // Yeni hýz ayarý
         gameObject.SetActive(true); // Mermiyi aktif et
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+
+        if (collision.CompareTag("Enemy")) // Çarpan nesne "Bullet" tagine sahip mi?
+        {
+            EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+            if (enemy != null)
+            {
+                
+                enemy.TakeDamage(damage);// Hasar ver
+                ReturnToPool(); // Mermiyi havuza geri gönder
+            }
+        }
     }
 }
