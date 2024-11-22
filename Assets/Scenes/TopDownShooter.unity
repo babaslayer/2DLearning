@@ -734,7 +734,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -780,9 +780,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputx: 0
   inputy: 0
-  movementSpeed: 10
+  movementSpeed: 3.57
   body: {fileID: 1715508225}
   moveDirection: {x: 0, y: 0}
+  dashDuration: 0.17
+  dashCooldown: 0.52
+  dashSpeed: 15.36
+  canDash: 0
+  isDashing: 0
 --- !u!1 &2096132886
 GameObject:
   m_ObjectHideFlags: 0
