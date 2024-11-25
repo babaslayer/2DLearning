@@ -96,12 +96,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5759815528112313006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e464d058610b714b9cf87c19952dfdc, type: 3}
+  m_Script: {fileID: 11500000, guid: c6164afe7f2afca45b864b5b8f70d573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnemyHp: 10
-  enemyHp: 10
-  enemyBody: {fileID: 6042037467999356153}
+  enemyHp: 0
+  enemyBody: {fileID: 0}
   bullet: {fileID: 0}
 --- !u!50 &6042037467999356153
 Rigidbody2D:

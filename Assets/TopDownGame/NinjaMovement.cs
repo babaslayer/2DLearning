@@ -37,22 +37,18 @@ public class NinjaMovement : MonoBehaviour
 
             StartCoroutine(Dash());
 
-
-
-
-
         }
 
         IEnumerator Dash()
         {
 
-            canDash = false;
-            isDashing = true;
-            body.velocity = moveDirection * dashSpeed;
-            yield return new WaitForSeconds(dashDuration);
-            isDashing = false;
-            yield return new WaitForSeconds(dashCooldown);
-            canDash = true;
+            canDash = false;//Öncelikle dashi atabilme becerimizi kapatýyoruz.(Tekrar atamayalým diye)
+            isDashing = true;//Dashi atarkenki sürecin aktif olduðunu yazýyoruz.
+            body.velocity = moveDirection * dashSpeed;//Dashi hangi yönde hangi hýzda atacaðýmýzý yazýyoruz.
+            yield return new WaitForSeconds(dashDuration);//Ne kadar süre dash attýðýmýz
+            isDashing = false;//Dash atmayý durdur.
+            yield return new WaitForSeconds(dashCooldown);//Tekrar ne zaman dash atabileceðimizi yazýyoruz.
+            canDash = true;//Tekrar dash atabilicez.
 
         }
 

@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 1219017774}
   - component: {fileID: 1219017773}
   - component: {fileID: 1219017775}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -615,16 +615,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputx: 0
-  inputy: 0
-  runSpeed: 0
-  jumpPower: 0
+  moveDirection: {x: 0, y: 0}
+  runSpeed: 6.9
+  jumpPower: 8.33
   body: {fileID: 0}
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  rayLenght: 0.5
+    m_Bits: 64
+  jumpCounter: 0
+  rayLenght: 1.2
   rayOffset: {x: 0, y: 0}
+  dashDuration: 1.53
+  dashCooldown: 0.65
+  dashSpeed: 17.4
+  canDash: 1
+  isDashing: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

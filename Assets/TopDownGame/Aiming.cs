@@ -21,9 +21,6 @@ public class Aiming : MonoBehaviour
     }
     void Aim()
     {
-
-
-
         Vector3 mousePos = (Camera.main.ScreenToWorldPoint(Input.mousePosition));//Mouseun pozisyonunu ekranda nerede olduðunu hesaplar.
         mousePos.z = 0;
         gun_pivot.transform.right = (mousePos - gun_pivot.position).normalized;//Mouseun pozisyonu ile karakterimizin arasýndaki yön vektörünü belirler.
