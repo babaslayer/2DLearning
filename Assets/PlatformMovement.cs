@@ -64,11 +64,14 @@ public class PlatformerMovement : MonoBehaviour
 
     void Movement()
     {
-        float inputx = Input.GetAxisRaw("Horizontal");
-        float inputy = Input.GetAxisRaw("Vertical");
-        body.velocity = new Vector2(inputx * runSpeed, body.velocity.y);
-        moveDirection = new Vector2(inputx, inputy).normalized;
-        Debug.Log(moveDirection);
+        if (!isDashing)
+        {
+            float inputx = Input.GetAxisRaw("Horizontal");
+            float inputy = Input.GetAxisRaw("Vertical");
+            body.velocity = new Vector2(inputx * runSpeed, body.velocity.y);
+            moveDirection = new Vector2(inputx, inputy).normalized;
+            Debug.Log(moveDirection);
+        }
     }
 
     void Jump()
@@ -106,7 +109,7 @@ public class PlatformerMovement : MonoBehaviour
             Movement();
 
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash )
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             dashDirection = input.normalized;
