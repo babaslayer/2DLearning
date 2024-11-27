@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //body.velocity=Vector2.up*jumpPower*speedMult;
-        body.AddForce(Vector2.up * jumpPower * jumpMultiplier, ForceMode2D.Impulse);
+        body.AddForce(Vector2.up * jumpPower * (jumpMultiplier+0.7f), ForceMode2D.Impulse);
     }
    
 }

@@ -107,7 +107,7 @@ public class Punch : MonoBehaviour
             float idealDistance = punch_target_distance / 2f;
             float currentPunchDistance = Vector2.Distance(transform.position, punch_transform.position);
             float jumpMultiplier = (idealDistance - Mathf.Abs(idealDistance-currentPunchDistance))/idealDistance;
-            jumpMultiplier=Mathf.Clamp(jumpMultiplier, 0.6f, 10f);
+           // jumpMultiplier=Mathf.Clamp(jumpMultiplier, 0.6f, 10f);
             playerMovement.Jumping(jumpMultiplier) ;
 
         }

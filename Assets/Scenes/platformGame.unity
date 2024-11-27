@@ -627,9 +627,9 @@ MonoBehaviour:
   jumpCounter: 0
   rayLenght: 1.2
   rayOffset: {x: 0, y: 0}
-  dashDuration: 1.53
+  dashDuration: 0.4
   dashCooldown: 0.65
-  dashSpeed: 17.4
+  dashSpeed: 10.5
   canDash: 1
   isDashing: 0
   dashDirection: {x: 0, y: 0}

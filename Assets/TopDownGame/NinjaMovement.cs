@@ -15,6 +15,7 @@ public class NinjaMovement : MonoBehaviour
     [SerializeField] bool canDash;
     [SerializeField] bool isDashing;
 
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();

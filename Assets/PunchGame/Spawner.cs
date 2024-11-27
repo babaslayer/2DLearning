@@ -7,7 +7,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject obstacle;
     [SerializeField] GameObject coin;
     [SerializeField] float timer_coin;
-    [SerializeField] float timer_obstacle ;
+    [SerializeField] float timer_obstacle;
+    [SerializeField] List<GameObject> coinPatterns;
    
     void Start()
     {
@@ -16,42 +17,48 @@ public class Spawner : MonoBehaviour
 
     void SpawnObstacle()
     {
-        timer_obstacle = 3;
-        Instantiate(obstacle, new Vector2 (10,Random.Range(-3f,1.5f)), transform.rotation);
-  
+        if (timer_obstacle <= 0)
+        {
+            timer_obstacle = 3;
+            Instantiate(obstacle, new Vector2(10, Random.Range(-3f, 1.5f)), transform.rotation);
+
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        if (timer_coin <= 0)
-        {
-            SpawnCoin();
-        }
-        timer_coin -= Time.deltaTime;
-        timer_obstacle -= Time.deltaTime;
+        
+        TimerObjects();
+        SpawnCoin();
+        SpawnObstacle();    
+       
+
+        
 
 
-        if (timer_obstacle <= 0)
-        {
-            SpawnObstacle();
-
-        }
 
 
+
+    }
+    void SpawnCoin()
+    {
         if (timer_coin < 0)
         {
+            timer_coin = 5f;
 
-            SpawnCoin();
-
-        }
-        void SpawnCoin()
-        {
-            timer_coin = 0.5f;
-            Instantiate(coin, new Vector2(11f, Random.Range(-4f, 4f)), transform.rotation);
-
-
+            int randomIndex = Random.Range(0,coinPatterns.Count);
+            GameObject selectedPattern = coinPatterns[randomIndex];
+            GameObject spawnedCoin = Instantiate(selectedPattern,transform.position,transform.rotation);         
 
         }
+
+    }
+    void TimerObjects()
+    {
+
+
+        timer_coin -= Time.deltaTime;
+        timer_obstacle -= Time.deltaTime;
 
 
     }
