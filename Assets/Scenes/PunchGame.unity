@@ -572,6 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 0}
   jumpPower: 6
+  minPower: 0.2
   gameManager: {fileID: 2028962699}
   coinManager: {fileID: 0}
 --- !u!114 &582119766

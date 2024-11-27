@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D body;
 
     [SerializeField] float jumpPower = 1f;
+    [SerializeField] float minPower;
     float gravity;
     public GameManager gameManager;
     public CoinManager coinManager;
@@ -75,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //body.velocity=Vector2.up*jumpPower*speedMult;
-        body.AddForce(Vector2.up * jumpPower * (jumpMultiplier+0.7f), ForceMode2D.Impulse);
+        body.AddForce(Vector2.up * jumpPower * (jumpMultiplier+minPower), ForceMode2D.Impulse);
     }
    
 }
