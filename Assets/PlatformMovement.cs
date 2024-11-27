@@ -24,17 +24,21 @@ public class PlatformerMovement : MonoBehaviour
     [SerializeField] private Vector2 rayOffset = Vector2.zero;
 
     [Header("Dash")]
-
+ 
     [SerializeField] float dashDuration;
     [SerializeField] float dashCooldown;
     [SerializeField] float dashSpeed;
     [SerializeField] bool canDash;
     [SerializeField] bool isDashing;
     [SerializeField] private Vector2 dashDirection;
+    [SerializeField] private int maxDashes = 1;
+    private int dashCount;
 
     [Header("Gravity")]
     [SerializeField] private float originalGravity;
     [SerializeField] private float dashGravity = 0f;
+
+    private bool facingright = true;
 
 
     private void Awake()
@@ -47,6 +51,7 @@ public class PlatformerMovement : MonoBehaviour
     void Start()
     {
         jumpCounter = 2;
+        dashCount = maxDashes;
     }
 
     // Update is called once per frame
@@ -61,7 +66,15 @@ public class PlatformerMovement : MonoBehaviour
 
     }
 
+    void Flip()
 
+    {
+        facingright = !facingright;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+
+    }
     void Movement()
     {
         if (!isDashing)
@@ -71,6 +84,15 @@ public class PlatformerMovement : MonoBehaviour
             body.velocity = new Vector2(inputx * runSpeed, body.velocity.y);
             moveDirection = new Vector2(inputx, inputy).normalized;
             Debug.Log(moveDirection);
+
+            if(inputx>0 && !facingright)
+            {
+                Flip();
+            }
+            else if(inputx<0 && facingright)
+            {
+                Flip();
+            }
         }
     }
 
@@ -92,6 +114,10 @@ public class PlatformerMovement : MonoBehaviour
         isGrounded = hit.collider != null && body.velocity.y < 0;//Bir collide a çarpýyorsa yerde infosunu verir.(Iþýnýn çarpacaðý yerin colliderý olmasý gerekiyor.)
 
         Debug.DrawRay(origin, Vector2.down * rayLenght, isGrounded ? Color.green : Color.red);
+        if (isGrounded)
+        {
+            dashCount = maxDashes;
+        }
 
     }
     void JumpCounter()//Sonra bak.
@@ -107,9 +133,8 @@ public class PlatformerMovement : MonoBehaviour
         if (!isDashing)
         {
             Movement();
-
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && dashCount > 0)
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             dashDirection = input.normalized;
@@ -128,7 +153,7 @@ public class PlatformerMovement : MonoBehaviour
 
         canDash = false; // Dash yapmayý kapat
         isDashing = true; // Dash aktif
-       // dashCount--; // Bir dash hakkýný tüket
+        dashCount--; // Bir dash hakkýný tüket
 
         float originalGravity = body.gravityScale; // Orijinal yerçekimini kaydet
         body.gravityScale = dashGravity; // Dash sýrasýnda yerçekimi sýfýrla
@@ -142,7 +167,7 @@ public class PlatformerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown); // Dash bekleme süresi
         canDash = true; // Tekrar dash yapabilir
     }
-
+   
 
 
 }
